@@ -51,6 +51,10 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
+        #qrcode img {
+            display: block;
+        }
+
         .url {
             margin-top: 20px;
             font-size: 0.9rem;
@@ -62,6 +66,26 @@
             font-size: 2rem;
             margin-bottom: 15px;
         }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8a8a 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
+        }
     </style>
 </head>
 
@@ -71,6 +95,8 @@
         <h1>Scan to Open</h1>
         <p>Share this with your Valentine!</p>
         <div id="qrcode"></div>
+        <br>
+        <button class="download-btn" onclick="downloadQR()">📥 Download QR Code</button>
         <p class="url">basin-pr7a.onrender.com</p>
     </div>
 
@@ -80,7 +106,17 @@
         const qr = qrcode(0, 'M');
         qr.addData(url);
         qr.make();
-        document.getElementById('qrcode').innerHTML = qr.createSvgTag(6);
+
+        // Create as image instead of SVG for easier downloading
+        document.getElementById('qrcode').innerHTML = qr.createImgTag(6);
+
+        function downloadQR() {
+            const img = document.querySelector('#qrcode img');
+            const link = document.createElement('a');
+            link.download = 'valentine-qr-code.png';
+            link.href = img.src;
+            link.click();
+        }
     </script>
 </body>
 

@@ -101,12 +101,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <script>
-        const url = 'https://basin-pr7a.onrender.com/landing.html';
+        const url = 'https://basin-pr7a.onrender.com';
         const qr = qrcode(0, 'M');
         qr.addData(url);
         qr.make();
 
-        // Create as image instead of SVG for easier downloading
         document.getElementById('qrcode').innerHTML = qr.createImgTag(6);
 
         function downloadQR() {

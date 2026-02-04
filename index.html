@@ -38,8 +38,74 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <button class="click-btn" onclick="window.location.href='landing.html?autoplay=1'">CLICK ME</button>
+    <div class="container" id="clickContainer">
+        <button class="click-btn" id="clickMeBtn">CLICK ME</button>
     </div>
+
+
+    <div id="proposal-view" class="proposal-view hidden">
+        <audio id="bgMusic" loop>
+            <source src="everyday.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="card">
+            <div class="hearts-bg"></div>
+            <div class="emoji-icon">🩵</div>
+            <h1>Will you be my Valentine?</h1>
+            <p class="subtitle">You make my heart skip a beat!</p>
+            <div class="buttons">
+                <button id="yes-btn" class="btn btn-yes">Yes ❤️</button>
+                <button id="no-btn" class="btn btn-no">No 💔</button>
+            </div>
+        </div>
+
+
+        <div id="success-view" class="success-view hidden">
+            <div class="confetti-container" id="confetti"></div>
+            <a href="index.html" class="back-btn">← Back</a>
+            <div class="success-content">
+                <div class="success-emoji">😌😌😌</div>
+                <h1>When man ka freeee? </h1>
+                <div class="floating-hearts">
+                    <span>❤️</span><span>💖</span><span>💕</span><span>💗</span><span>💓</span>
+                    <span>❤️</span><span>💖</span><span>💕</span><span>💗</span><span>💓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="error-view" class="error-view hidden">
+        <div class="error-content">
+            <div class="dino-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 42h4v-4H8v4zm8-28h4V6h-4v8zm8 0V6h-4v8h4zm8 0V6h-4v8h4zm0 0h4v8h-4v-8zm4 8v8h4v-8h-4zm0 8h-4v4h4v-4zm-4 4h-4v4h4v-4zm-4 4h-8v4h8v-4zm-8 0v-4h-4v4h4zm-4-4v-4H12v4h4zm0 0h4v-4h-4v4zm-4-8v4h4v-4h-4zm0 0H8v-8h4v8zm0-8V10h-4v8h4zm0 0h4v4h-4v-4zm24 4v4h4v-4h-4z" fill="#5F6368" />
+                    <path d="M28 14h4v4h-4v-4z" fill="#5F6368" />
+                </svg>
+            </div>
+            <h1>No internet</h1>
+            <div class="error-message">
+                <p class="try-text">Try:</p>
+                <ul>
+                    <li>Checking the network cables, modem, and router</li>
+                    <li>Reconnecting to Wi-Fi</li>
+                    <li><a href="#" class="diagnostics-link">Running Windows Network Diagnostics</a></li>
+                </ul>
+                <p class="error-code">ERR_INTERNET_DISCONNECTED</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    
+    document.getElementById('clickMeBtn').addEventListener('click', function () {
+        const clickContainer = document.getElementById('clickContainer');
+        const proposal = document.getElementById('proposal-view');
+        const bg = document.getElementById('bgMusic');
+        if (clickContainer) clickContainer.classList.add('hidden');
+        if (proposal) proposal.classList.remove('hidden');
+        if (bg) { bg.volume = 0.5; bg.play().catch(()=>{}); }
+    });
+    </script>
+
 </body>
 </html>

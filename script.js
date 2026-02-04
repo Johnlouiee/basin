@@ -7,15 +7,8 @@ const noBtn = document.getElementById('no-btn');
 const bgMusic = document.getElementById('bgMusic');
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    bgMusic.volume = 0.5;
-    bgMusic.play().catch(() => {
 
-        console.log('Autoplay blocked, waiting for user interaction...');
-    });
-});
-
-
+// Removed autoplay attempt on load — music is played on user interaction (CLICK ME)
 
 yesBtn.addEventListener('click', () => {
 

@@ -16,11 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('click', () => {
-    if (bgMusic.paused) {
-        bgMusic.play();
-    }
-}, { once: true });
 
 yesBtn.addEventListener('click', () => {
 
